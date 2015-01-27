@@ -1,11 +1,13 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
+var _ = require('lodash');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var MongoStore = require('connect-mongo')(session);
+var apiOptions = require('./lib/config/options');
 
 module.exports = function (options) {
     options = options || {};
@@ -20,6 +22,8 @@ module.exports = function (options) {
 
     require('./lib/config/mongoose').init(mongoose);
     require('./lib/config/passport')(passport);
+
+    _.assign(apiOptions, _.pick(options, 'simulate'));
 
     var app = express();
 
