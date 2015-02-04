@@ -23,7 +23,7 @@ module.exports = function (options) {
     require('./lib/config/mongoose').init(mongoose);
     require('./lib/config/passport')(passport);
 
-    _.assign(apiOptions, _.pick(options, 'simulate'));
+    _.assign(apiOptions, _.pick(options, 'possibleValues', 'simulate', 'onCreate'));
 
     var app = express();
 
