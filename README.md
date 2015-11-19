@@ -37,6 +37,9 @@ These values are passed with the `possibleValues` option, as an array of objects
 - `label`: a complete label that will be displayed to the user.
 - `shortLabel`: a shorter label for the user to be used in table layouts.
 - `hasMontant`: boolean. Set to `true` if the expected value is a number, set to `false` otherwise.
+- `uncomputabilityReasons` _(optional)_: object mapping IDs to labels, listing possible reasons why the value could be uncomputable. If set, will give the option to the user to mark that the value is not computable.
+
+> Uncomputability for an item is handled by convention, through a generated item that will have the id of the uncomputable item, suffixed by `_non_calculable`, and whose values are keys of the `uncomputabilityReasons` object.
 
 
 Authentication
