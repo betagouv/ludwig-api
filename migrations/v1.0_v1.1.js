@@ -23,6 +23,12 @@ stream.on('data', function(acceptanceTest) {
     if (! diff)
         return console.log(acceptanceTest._id, 'Nothing to do');
 
+    if (! cleanedResults.length) {
+        return acceptanceTest.remove(function(err, product) {
+            console.log(acceptanceTest._id, 'Deleted (all tested values removed)')
+        });
+    }
+
     acceptanceTest
         .set('expectedResults', cleanedResults)
         .save(function(err, data) {
@@ -32,7 +38,6 @@ stream.on('data', function(acceptanceTest) {
             }
 
             console.log(acceptanceTest._id, 'Removed', diff, 'obsolete values to test');
-
         });
 });
 
