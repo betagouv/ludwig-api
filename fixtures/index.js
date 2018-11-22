@@ -28,7 +28,7 @@ function loadFixtures(config) {
                 console.log('====\nLoaded', arguments.length, modelName, 'fixtures from', filename, '\n====');
             }, function (error) {
                 console.error('Could not load', modelName, 'fixture from', filename, ': ', error);
-            }).end();
+            });
         });
     });
 }
